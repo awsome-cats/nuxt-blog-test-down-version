@@ -1,0 +1,20 @@
+{
+  "name": "test-down-version",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nuxt"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@nuxtjs/eslint-module": "^1.0.0",
+    "nuxt": "^2.9.2"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.1"
+  }
+}
