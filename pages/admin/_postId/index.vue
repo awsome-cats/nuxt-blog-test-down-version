@@ -16,7 +16,7 @@ export default {
   data () {
     return {
       loadedPost: {
-        author: 'Mark',
+        author: 'kenny',
         title: '私の投稿',
         content: 'あなたは素敵なリモートワーク',
         thumbnailLink: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTyVHRLlDbRXRr5-N62PlJJmDmqZgiZqq3fjBFnPNCMtwcryulT&usqp=CAU'
