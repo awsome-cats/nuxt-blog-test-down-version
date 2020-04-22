@@ -5,7 +5,7 @@
     </div>
     <div class="posts-page">
     <section class="post-list">
-      <PostList/>
+      <PostList />
     </section>
   </div>
   </div>
