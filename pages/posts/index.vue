@@ -5,7 +5,7 @@
     </div>
     <div class="posts-page">
     <section class="post-list">
-      <PostList/>
+      <PostList :posts="loadedPosts"/>
     </section>
   </div>
   </div>
@@ -16,7 +16,14 @@ import PostList from '@/components/Posts/PostList'
 export default {
   components: {
     PostList
+  },
+  // storeの配列を返す
+  computed: {
+    loadedPosts() {
+      return this.$store.getters.loadedPosts
+    }
   }
+  
 }
 </script>
 

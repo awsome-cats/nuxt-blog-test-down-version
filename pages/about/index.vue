@@ -10,6 +10,7 @@
     <p>
       Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero laborum asperiores.
     </p>
+    <p><nuxt-link to="/">戻る</nuxt-link></p>
   </div>
 </template>
 

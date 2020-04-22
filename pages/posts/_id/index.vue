@@ -2,24 +2,43 @@
   <div class="single-post-page">
     <section class="post">
       <h1 class="post-title">
-        Title of the post
+        タイトル: {{loadedPost.title}}
       </h1>
       <div class="post-details">
         <div class="post-detail">
-          Last updated on XXX
+          Last updated on {{loadedPost.updatedDate}}
         </div>
         <div class="post-detail">
-          Written by Name pageID:{{ $route.params.id }}
+          <!-- contextのparamsは使えなかった -->
+          Written by Name {{loadedPost.author}},pageID:{{ $route.params.id }}
         </div>
+        <p>{{loadedPost.content}}</p>
       </div>
       <p>Let me know what you think about the post , send a mail to <a href="feedback@my-awsome-domain.com">feedback@my-awsome-domain.com.</a></p>
+      <p><nuxt-link to="/">戻る</nuxt-link></p>
     </section>
   </div>
 </template>
 
 <script>
 export default {
+  asyncData(context, callback) {
+    setTimeout(() => {
+      callback(null, {
+        loadedPost: 
+          {
+            author: 'kenny',
+            updatedDate: new Date(),
+            title: 'リモートワークにとって大事なこと3つ (ID: '+ context.route.params.id +')',
+            id: '1',
+            content: 'こんな時代だからこそオンラインの拡充を....',
+            previewText: '初投稿',
+            thumbnail: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTyVHRLlDbRXRr5-N62PlJJmDmqZgiZqq3fjBFnPNCMtwcryulT&usqp=CAU'
+          }
+      })
+    },100)
 
+  }
 }
 </script>
 
