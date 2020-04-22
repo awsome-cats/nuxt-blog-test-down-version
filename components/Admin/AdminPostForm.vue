@@ -37,7 +37,6 @@ export default {
     AppControlInput
   },
   props: {
-    // eslint-disable-next-line vue/require-default-prop
     post: {
       type: Object,
       required: false
@@ -56,7 +55,6 @@ export default {
   methods: {
     onSave () {
       // save
-      // eslint-disable-next-line no-console
       console.log(this.editPost)
     },
     onCancel () {
