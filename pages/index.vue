@@ -15,44 +15,10 @@ export default {
   components: {
     PostList
   },
-  asyncData(context, callback) {
-    setTimeout(() =>{
-      callback(null, {
-        loadedPosts :[
-        {
-          id: '1',
-          title: '投稿1', 
-          previewText: '初投稿',
-          thumbnail: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTyVHRLlDbRXRr5-N62PlJJmDmqZgiZqq3fjBFnPNCMtwcryulT&usqp=CAU'
-        },
-        {
-          id: '2',
-          title: '投稿2', 
-          previewText: '投稿2',
-          thumbnail: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTyVHRLlDbRXRr5-N62PlJJmDmqZgiZqq3fjBFnPNCMtwcryulT&usqp=CAU'
-        },{
-          id: '3',
-          title: '投稿3', 
-          previewText: '投稿3',
-          thumbnail: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTyVHRLlDbRXRr5-N62PlJJmDmqZgiZqq3fjBFnPNCMtwcryulT&usqp=CAU'
-        },
-        {
-          id: '4',
-          title: '投稿4', 
-          previewText: '投稿4',
-          thumbnail: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTyVHRLlDbRXRr5-N62PlJJmDmqZgiZqq3fjBFnPNCMtwcryulT&usqp=CAU'
-        }
-      ]
-      })
-    }, 1000)
-  },
-  // data () {
-  //   return {
-  //     loadedPosts: []
-  //   }
-  // },
-  created(){
-     
+  computed: {
+    loadedPosts() {
+      return this.$store.getters.loadedPosts
+    }
   }
 }
 </script>
