@@ -19,20 +19,34 @@
 const createStore = () => {
   return new Vuex.Store({
     state: {
-      loadedPosts: []
+      loadedPosts: [],
+      foodPosts: []
     },
     // state, payloadを引数にとってpostsに代入する
     mutations: {
       setPosts (state, posts) {
         state.loadedPosts = posts
+      },
+      setFoodPosts(state, foods) {
+        state.foodPosts = foods
       }
     },
     // commitを使ってmutaitionsのsetPostsを呼び出す
+    // vuexContext: vuexのcontextでactionsの中でのみ使える
+    // Nuxt.jsのcontextとは違う
+    // vuexContextの内容
+    // {
+    // state,      // `store.state` と同じか、モジュール内にあればローカルステート
+    // rootState,  // `store.state` と同じ。ただしモジュール内に限る
+    // commit,     // `store.commit` と同じ
+    // dispatch,   // `store.dispatch` と同じ
+    // getters,    // `store.getters` と同じか、モジュール内にあればローカルゲッター
+    // rootGetters // `store.getters` と同じ。ただしモジュール内に限る
+    // }
     actions: {
-      nuxtServerInit(vuexContext, context) {
+      nuxtServerInit(context) {
         return new Promise((resolve, reject) => {
-          setTimeout(() =>{
-            vuexContext.commit('setPosts',[
+            context.commit('setPosts',[
               {
                 id: '1',
                 title: '投稿1', 
@@ -58,19 +72,25 @@ const createStore = () => {
                 thumbnail: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTie-RNPNuofgrhFrHS83JqX7Kv8zYM7cWeueX77AAff9gMRMib&usqp=CAU'
               }
             ])
-            
-          resolve()
-        }, 100)
+            resolve()
         })
       },
-      setPosts (vuexContext, posts) {
-        vuexContext.commit('setPosts', posts)
+      
+      setPosts (context, posts) {
+        context.commit('setPosts', posts)
+      },
+      setFoodPosts (context, foods) {
+        context.commit('setFoodPosts',foods)
       }
     },
+
     // 配列を返す
     getters: {
       loadedPosts (state) {
         return state.loadedPosts
+      },
+      foodPosts (state) {
+        return state.foodPosts
       }
     }
   })

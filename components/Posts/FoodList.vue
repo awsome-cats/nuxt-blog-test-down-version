@@ -1,14 +1,14 @@
 <template>
   <div>
-    <section class="post-list">
-      <post-preview
-        v-for="post in posts"
-        :key="post.id"
-        :id="post.id"
+    <section class="food-list">
+      <food-preview
+        v-for="food in foods"
+        :key="food.id"
+        :id="food.id"
         :is-admin ='isAdmin'
-        :title="post.title"
-        :preview-text="post.previewText"
-        :thumbnail="post.thumbnail"
+        :title="food.title"
+        :preview-text="food.previewText"
+        :thumbnail="food.thumbnail"
       />
     </section>
     
@@ -16,17 +16,17 @@
 </template>
 
 <script>
-import postPreview from '@/components/Posts/PostPreview'
+import FoodPreview from '@/components/Posts/FoodPreview'
 export default {
   components: {
-    postPreview
+    FoodPreview
   },
   props: {
     isAdmin: {
       type: Boolean,
       default: false
     },
-      posts: {
+      foods: {
       type: Array,
       required: true
     }
@@ -35,7 +35,7 @@ export default {
 </script>
 
 <style>
-.post-list {
+.food-list {
   display: flex;
   padding: 20px;
   box-sizing: border-box;
