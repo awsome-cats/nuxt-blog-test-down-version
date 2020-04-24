@@ -5,6 +5,7 @@
       <div class="post-content">
         <h1>{{ title }}</h1>
         <p>{{ previewText }}</p>
+        
       </div>
     </article>
   </nuxt-link>
@@ -58,7 +59,7 @@ a {
 
 @media (min-width: 850px) {
   .post-preview {
-    width: 400px;
+    width: 300px;
     margin: 10px;
   }
 }

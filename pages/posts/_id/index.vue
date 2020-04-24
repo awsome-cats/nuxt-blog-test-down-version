@@ -6,13 +6,18 @@
       </h1>
       <div class="post-details">
         <div class="post-detail">
-          Last updated on {{loadedPost.updatedDate}}
+          Last updated on {{loadedPost.updatedDate | date}}
         </div>
         <div class="post-detail">
           <!-- contextのparamsは使えなかった -->
-          Written by Name {{loadedPost.author}},pageID:{{ $route.params.id }}
+          Written by Name {{loadedPost.author}}: {{$route.params.id}}
+          
         </div>
-        <p>{{loadedPost.content}}</p>
+        <div>
+          <p>{{loadedPost.content}}</p>
+          <p>{{loadedPost.previewText }}</p>
+        </div>
+        
       </div>
       <p>Let me know what you think about the post , send a mail to <a href="feedback@my-awsome-domain.com">feedback@my-awsome-domain.com.</a></p>
       <p><nuxt-link to="/">戻る</nuxt-link></p>
@@ -21,23 +26,17 @@
 </template>
 
 <script>
+import axios from 'axios'
 export default {
-  asyncData(context, callback) {
-    setTimeout(() => {
-      callback(null, {
-        loadedPost: 
-          {
-            author: 'kenny',
-            updatedDate: new Date(),
-            title: 'リモートワークにとって大事なこと3つ (ID: '+ context.route.params.id +')',
-            id: '1',
-            content: 'こんな時代だからこそオンラインの拡充を....',
-            previewText: '初投稿',
-            thumbnail: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTyVHRLlDbRXRr5-N62PlJJmDmqZgiZqq3fjBFnPNCMtwcryulT&usqp=CAU'
-          }
-      })
-    },100)
-
+ 
+  asyncData (context) {
+    return axios.get(process.env.baseUrl + '/posts/' + context.params.id + '.json')
+    .then (res => {
+      return {
+        loadedPost: res.data
+      }
+    })
+    .catch(e => context.error(e))
   }
 }
 </script>
@@ -55,7 +54,7 @@ export default {
 
 @media (min-width: 768px) {
   .post {
-    width: 600px;
+    width: 800px;
     margin: auto;
   }
 }

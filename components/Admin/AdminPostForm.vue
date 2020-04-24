@@ -7,11 +7,14 @@
     <AppControlInput v-model="editPost.title">
       タイトル
     </AppControlInput>
-    <AppControlInput v-model="editPost.thumbnailLink">
+    <AppControlInput v-model="editPost.thumbnail">
       サムネイルリンク
     </AppControlInput>
     <AppControlInput v-model="editPost.content" control-type="textarea">
       コンテント
+    </AppControlInput>
+    <AppControlInput v-model="editPost.previewText" control-type="textarea">
+      プレビュー
     </AppControlInput>
     <AppButton type="submit">
       save
@@ -31,6 +34,8 @@
 <script>
 import AppButton from '~/components/UI/AppButton'
 import AppControlInput from '~/components/UI/AppControlInput'
+
+
 export default {
   components: {
     AppButton,
@@ -47,15 +52,15 @@ export default {
       editPost: this.post ? { ...this.post } : {
         author: '',
         title: '',
-        thumbnailLink: '',
-        content: ''
+        thumbnail: '',
+        content: '',
+        previewText: ''
       }
     }
   },
   methods: {
     onSave () {
-      // save
-      console.log(this.editPost)
+     this.$emit('submit', this.editPost)
     },
     onCancel () {
       this.$router.push('/')

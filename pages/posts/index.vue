@@ -17,9 +17,6 @@ export default {
   components: {
     PostList
   },
-  // created () {
-  //   this.$store.dispatch('setPosts', this.loadedPosts)
-  // }
   // storeの配列を返す
   computed: {
     loadedPosts() {

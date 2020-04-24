@@ -11,7 +11,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@nuxtjs/eslint-module": "^1.0.0",
+    "@nuxtjs/dotenv": "^1.4.0",
+    "axios": "^0.19.2",
     "nuxt": "^2.9.2"
   },
   "devDependencies": {

@@ -30,7 +30,15 @@ export default {
       type: Array,
       required: true
     }
+  },
+  created(){
+    console.log('props',this.posts)
   }
+  // computed: {
+  //   posts() {
+  //     console.log(this.posts)
+  //   }
+  // }
 }
 </script>
 
@@ -44,3 +52,4 @@ export default {
   justify-content: center;
 }
 </style>
+

@@ -5,3 +5,5 @@ node_modules
 desc.md
 
 package-lock.json
+
+nuxt.config.js
