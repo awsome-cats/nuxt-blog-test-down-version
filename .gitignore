@@ -7,3 +7,5 @@ desc.md
 package-lock.json
 
 nuxt.config.js
+
+.env
