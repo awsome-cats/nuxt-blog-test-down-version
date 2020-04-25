@@ -24,7 +24,7 @@ export const mutations = {
 
 export const actions = {
   nuxtServerInit(vuexContext, context) {
-    return axios.get(process.env.baseUrl + '/posts.json')
+    return axios.get(process.env.API_URL + '/posts.json')
     
     .then(res => {
       const postsArray = []
@@ -35,25 +35,24 @@ export const actions = {
     })
     .catch(e => context.error(e))
   },
-  setPosts(vuexContext, posts) {
-    vuexContext.commit('setPosts', posts)
-  },
   addPost(vuexContext, post){
     const createdPost = {...post, updatedDate: new Date()}
-    return axios.post(process.env.BASE_URL, createdPost)
+    return axios.post(process.env.API_URL + '/posts.json', createdPost)
       .then(result => {
         vuexContext.commit('addPost', {...createdPost, id: result.data.name})
       })
       .catch(e => console.log(e))
   },
   editPost(vuexContext, editedPost) {
-    return axios.put(process.env.BASE_URL + '/' + editedPost.id + '.json', editedPost)
+    return axios.put(process.env.API_URL + '/posts/' + editedPost.id + '.json', editedPost)
     .then(res => {
       vuexContext.commit('editPost', editedPost)
     })
       .catch(e => console.log(e))
-  }
-  
+  },
+  setPosts(vuexContext, posts) {
+    vuexContext.commit('setPosts', posts)
+  },
 }
 
 export const getters = {

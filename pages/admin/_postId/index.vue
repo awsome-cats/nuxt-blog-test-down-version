@@ -26,7 +26,7 @@ export default {
   
   // Single Post
   asyncData (context) {
-    return axios.get(process.env.baseUrl + '/posts/' + context.params.postId + '.json')
+    return axios.get(process.env.API_URL + '/posts/' + context.params.postId + '.json')
     .then (res => {
       return {
         loadedPost: {...res.data, id: context.params.postId}

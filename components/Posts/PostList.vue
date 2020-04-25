@@ -30,10 +30,10 @@ export default {
       type: Array,
       required: true
     }
-  },
-  created(){
-    console.log('props',this.posts)
   }
+  // created(){
+  //   console.log('props',this.posts)
+  // }
   // computed: {
   //   posts() {
   //     console.log(this.posts)
